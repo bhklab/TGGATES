@@ -1,0 +1,170 @@
+\documentclass[a4paper,10pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+
+%opening
+\usepackage{authblk} % affiliations
+\usepackage{graphicx} % graphic path
+\usepackage{hyperref} % url
+
+
+% \newcommand{\subtitle}[1]{%
+%  \posttitle{%
+%   \par\end{center}
+%   \begin{center}\large#1\end{center}
+%   \vskip0.5em}%
+% }
+
+%------------------------------------------------------------------------------------
+% Path settings
+%------------------------------------------------------------------------------------
+
+\graphicspath{{../}{plots/}}
+% \newcommand{\}{text to insert}
+
+%------------------------------------------------------------------------------------
+% Global variables
+%------------------------------------------------------------------------------------
+
+% \newcommand{\mainscript}{\verb+Pipeline\_TGGATES.R+}
+
+%------------------------------------------------------------------------------------
+% Title settings
+%------------------------------------------------------------------------------------
+
+\title{Reproducibility of Analysis Results}
+
+\subtitle{Chemical-induced pathways in rat liver and human-rat cultured hepatocytes: Functional pathway conservation in early toxicity assessment}
+
+% Nehme El-Hachem1$, Patrick Grossmann$,2,4, Alexis Blanchet-Cohen1, Alain R. Bateman, Nicolas Bouchard1, Jacques Archambault1, Hugo J.W.L. Aerts2,3,4* & Benjamin Haibe-Kains5,6*
+
+\author[i]{Nehme El-Hachem\thanks{nehme.hachem@ircm.qc.ca}}
+\author[i]{Patrick Grossmann\thanks{patrick@jimmy.harvard.edu}}
+\author[ ]{Alexis Blanchet-Cohen}
+\author[ ]{Alain R. Bateman}
+\author[ ]{Nicolas Bouchard}
+\author[ ]{Jacques Archambault}
+\author[ii]{Hugo J.W.L. Aerts\thanks{hugo@jimmy.harvard.edu}}
+\author[ii]{Benjamin Haibe-Kains\thanks{benjamin.haibe.kains@utoronto.ca}}
+
+% \affil[1]{Institut de recherches cliniques de Montreal, Montreal, Quebec, Canada}
+% \affil[2]{Departments of Radiation Oncology, Dana-Farber Cancer Institute, Brigham and Women’s Hospital, Harvard Medical School, Boston, 02215-5450, MA, USA}
+% \affil[3]{Department of Biostatistics \& Computational Biology, Dana-Farber Cancer Institute, 02215-5450, Boston, MA, USA}
+% \affil[4]{Princess Margaret Cancer Centre, University Health Network, Toronto, Ontario, Canada}
+% \affil[5]{Medical Biophysics Department, University of Toronto, Toronto, Ontario, Canada} \vspace{1cm}
+\affil[i]{co-first authors}
+\affil[ii]{co-last authors}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------------------------
+% Start document
+%------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\tableofcontents
+
+\newpage
+
+%------------------------------------------------------------------------------------
+\section{Full reproducibility of the analysis results}
+%------------------------------------------------------------------------------------
+
+We describe how to fully reproduce the reported analysis results. Our results are based on a fully automated R \cite{rsoftware} pipeline that also generates all figures in the manuscript limiting additional edits. It is platform independent and requires only the following steps:
+
+\begin{enumerate}
+\item Setting up the R software environment,
+\item installing all required packages,
+\item running the main R script, and
+\item generating this supplementary information written in \LaTeX \cite{}.
+\end{enumerate}
+
+\section{The software environment}
+
+The main script is \verb+Pipeline_TGGATES.R+. This analysis pipeline was developed and run on a Linux platform. The following packages were used:
+
+% \input{sessionInfoR.tex}
+
+While most packages are available on the CRAN\footnote{\url{http://cran.us.r-project.org/}} or Bioconductor\footnote{\url{http://www.bioconductor.org/}} repositories, the following packages need to be installed separately:
+
+\begin{itemize}
+ \item PharmacoGx,
+ \item MetaGx,
+ \item inSilicoDb2, and
+ \item jetset.
+\end{itemize}
+
+The \verb+PharmacoGx+ and \verb+MetaGx+ packages have been developed by authors of this manuscript and are available on \url{https://github.com/bhaibeka/PharmacoGx/} and \url{https://github.com/bhaibeka/MetaGx}, respectively. Line 65 and 66 in \verb+Pipeline_TGGATES.R+ define boolean constants according to which these packages will automatically be installed from the Github repositories. Make sure that the \verb+devtools+ package is installed for this option. The \verb+inSilicoDb2+ package is available on request\footnote{Benjamin Haibe-Kains \url{benjamin.haibe.kains@utoronto.ca}}, but it can also be replaced by the \verb+inSilicoDb+ package on Bioconductor (\url{http://www.bioconductor.org/packages/2.12/bioc/html/inSilicoDb.html}). The \verb+jetset+ packages, which is used to select an optimal probe for duplicated genes, should be either installed according to the instructions on \url{http://www.cbs.dtu.dk/biotools/jetset/} or by the following commands within an active R session:
+
+\begin{verbatim}
+download.file(url="http://www.cbs.dtu.dk/biotools/jetset/current/jetset_2.14.0.tar.gz", 
+ destfile="jetset_2.14.0.tar.gz")
+install.packages("jetset_2.14.0.tar.gz", repos=NULL, type="source")
+\end{verbatim}
+
+Note that the present analysis has been performed with version 1.6 of the \verb+jetset+ package, which has now been updated by version 2.14 on the CBS website.
+
+%------------------------------------------------------------------------------------
+% \newpage
+\section{The analysis pipeline}
+%------------------------------------------------------------------------------------
+
+\subsection{Running full analysis}
+
+Once all packages are installed properly, the full analysis can be run by uncompressing the \verb+Pipeline_TGGATES.zip+ file provided as supplementary file, changing the current working directory to the uncompressed \verb+Pipeline+ directory, and starting a new R session within this directory. The results of this manuscript will be generated by sourcing the main script \verb+Pipeline_TGGATES.R+ with the command
+
+\begin{verbatim}
+ source("Pipeline_TGGATES.R")
+\end{verbatim}
+
+This will subsequently execute separate subpipelines, which are implemented in the following scripts saved to the ``scripts'' folder:
+
+\begin{description}
+ \item[\texttt{perform.pipelineA\_for\_id.R}] Downloads a TG-GATEs accession from ArrayExpress and normalizes the overall gene expression. Array probes are curated by matching probe IDs to gids and selecting the most variant gene for gene replicates. Furthermore, this sub pipeline runs linear models for every pair of gene and drug to calculate a gene rank score as described in the Methods section of the manuscript. The results are stored relatively in the subfolder ``GSEA/ranks'' as .rnk files.
+ \item[\texttt{perform.pipelineB.R}] Generates lists of gene sets with common pathways between rat and human. These pathways are inferred by mapping every gene to pathways in Reactome by functions in the \verb+biomaRt+ for each species separately with the genes retained from subpipeline A. The final gene sets are stored as .GMT files to the ``GSEA'' folder for later use of the pre-ranked version of Gene Set Enrichment Analysis (GSEA).
+ \item[\texttt{perform.pipelineC\_for\_id.R}] Performs GSEA on all existing .rnk files.
+ \item[\texttt{perform.pipelineD\_for\_id.R}] From GSEA results, matrices holding the GSEA normalized enrichment scores (NES) for every pair of drug and pathway are calculated. Modules are inferred from these matrices by biclustering.
+ \item[\texttt{perform.pipelineE.R}] Calculates the module overlap between species and experimental settings. This subpipeline generates Figure 2 (barplot of proportion of module overlaps). 
+ \item[\texttt{perform.pipelineF.R}] Hierarchical clustering of every module. This subpipeline calculates the heatmaps in Figure 3 and 4.
+\end{description}
+
+Analysis results (e.g. modules) are saved as RData files in the ``rdata'' folder, and results of intermediate steps in the analysis (e.g. GSEA results for every drug) are saved in ``rdata/intermediate''. Figures are stored to the ``plots'' folder.
+
+\subsection{Global variables}
+
+The main script \verb+Pipeline_TGGATES.R+ defines globally accessible variables of which the most important are described in the following:
+
+\begin{description}
+ \item[\texttt{gseaExecPath}] Sets the path for the executable GSEA \verb+JAVA+ file. The version used for this analysis is \verb+gsea2-2.0.14.jar+.
+ \item[\texttt{gseaMinSize}] Minimal gene set size to consider (defaults to 15).
+ \item[\texttt{gseaMaxSize}] Maximal gene set size to consider (defaults to 500).
+ \item[\texttt{ncores}] Many steps in the analysis are performed on independent threads to reduce the overall running time. This variable specifies the number of cores to be used (defaults to 10). In particular, the following analysis steps are performed in parallel:
+  \begin{itemize}
+   \item Fitting linear models,
+   \item calculating gene ranks and and outputting results as .rnk files, and
+   \item running GSEA.
+  \end{itemize}
+\end{description}
+
+% \begin{abstract}
+% 
+% \end{abstract}
+
+%------------------------------------------------------------------------------------
+% \section{}
+%------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------------
+% Bibliography
+%------------------------------------------------------------------------------------
+
+\newpage
+
+\bibliographystyle{plainnat}
+\bibliography{tggates_bib}
+
+\end{document}

@@ -1,0 +1,115 @@
+\documentclass[a4paper,12pt]{scrartcl}
+\usepackage[utf8]{inputenc}
+
+%opening
+\usepackage{authblk} % affiliations
+\usepackage{graphicx} % graphic path
+\usepackage{hyperref}
+\usepackage{pdfpages}
+
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+% \newcommand{\subtitle}[1]{%
+%  \posttitle{%
+%   \par\end{center}
+%   \begin{center}\large#1\end{center}
+%   \vskip0.5em}%
+% }
+
+%------------------------------------------------------------------------------------
+% Path settings
+%------------------------------------------------------------------------------------
+
+\graphicspath{{../}{plots/}}
+% \newcommand{\}{text to insert}
+
+%------------------------------------------------------------------------------------
+% Global variables
+%------------------------------------------------------------------------------------
+
+% \newcommand{\mainscript}{\verb+Pipeline\_TGGATES.R+}
+
+%------------------------------------------------------------------------------------
+% Title settings
+%------------------------------------------------------------------------------------
+
+\title{Supplemental Material}
+
+\subtitle{Characterization of conserved toxicogenomic responses in chemically exposed hepatocytes across species and platforms}
+
+% Nehme El-Hachem1$, Patrick Grossmann$,2,4, Alexis Blanchet-Cohen1, Alain R. Bateman, Nicolas Bouchard1, Jacques Archambault1, Hugo J.W.L. Aerts2,3,4* & Benjamin Haibe-Kains5,6*
+
+\author[i]{Nehme El-Hachem\thanks{nehme.hachem@ircm.qc.ca}}
+\author[i]{Patrick Grossmann\thanks{patrick@jimmy.harvard.edu}}
+\author[ ]{Alexis Blanchet-Cohen}
+\author[ ]{Alain R. Bateman}
+\author[ ]{Nicolas Bouchard}
+\author[ ]{Jacques Archambault}
+\author[ii]{Hugo J.W.L. Aerts\thanks{hugo@jimmy.harvard.edu}}
+\author[ii]{Benjamin Haibe-Kains\thanks{benjamin.haibe.kains@utoronto.ca}}
+
+% \affil[1]{Institut de recherches cliniques de Montreal, Montreal, Quebec, Canada}
+% \affil[2]{Departments of Radiation Oncology, Dana-Farber Cancer Institute, Brigham and Women’s Hospital, Harvard Medical School, Boston, 02215-5450, MA, USA}
+% \affil[3]{Department of Biostatistics \& Computational Biology, Dana-Farber Cancer Institute, 02215-5450, Boston, MA, USA}
+% \affil[4]{Princess Margaret Cancer Centre, University Health Network, Toronto, Ontario, Canada}
+% \affil[5]{Medical Biophysics Department, University of Toronto, Toronto, Ontario, Canada} \vspace{1cm}
+\affil[i]{co-first authors}
+\affil[ii]{co-last authors}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%------------------------------------------------------------------------------------
+% Start document
+%------------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+All supplemental material are being hosted and maintained at a companion website  (\textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/}}). The following files are available:
+
+% \begin{itemize}
+%  \item[S1:] Venn diagram showing the overlap between human and rat Reactome pathways.\\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S1.pdf}}
+%  \item[S2:] One hundred and fifteen common chemicals analyzed in the TG-GATEs project. Among the experiments in TG-GATEs, these 115 chemicals were common for the rat in vivo, primary human hepatocytes, and primary rat hepatocytes platforms. This included known rat hepatocarcinogens. Non-carcinogenic compounds, selected as a negative control, are highlighted in blue. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S2.pdf}}
+%  \item[S3:] Zip file of all module heatmaps in RLV, PHH and PRH. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S3.zip}}
+%  \item[S4:] Zip file with xls files containing p-values of module overlaps (for all experimental settings), p-values for the 'special' cases such as hepatocarcinogens/cancer pathways/etc. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S4.zip}}
+%  \item[S5:] Zip file with all leading edge genes in all modules for all datasets. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S5.zip}}
+%  \item[S6:] Document describing how to reproduce the study results by running the analysis pipeline. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S6.pdf}}
+%  \item[S7:] Analysis pipeline code without microarray data, also available at \url{https://github.com/bhaibeka/TGGATES}. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S7.zip}}
+%  \item[S8:] Histograms showing the distribution of significant differentially expressed genes in hepatocarcinogens vs. non hepatocarcinogens, in RLV, PRH and PHH respectively. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S8.zip}}
+% \end{itemize}
+
+% \begin{center}
+%     \begin{tabular}{ p{5cm}  c  p{20cm} }
+%     Supplemental Material S1: & & Venn diagram showing the overlap between human and rat Reactome pathways.\\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S1.pdf}} \\
+%     Supplemental Material S2: & & One hundred and fifteen common chemicals analyzed in the TG-GATEs project. Among the experiments in TG-GATEs, these 115 chemicals were common for the rat in vivo, primary human hepatocytes, and primary rat hepatocytes platforms. This included known rat hepatocarcinogens. Non-carcinogenic compounds, selected as a negative control, are highlighted in blue. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S2.pdf}} \\
+%     Supplemental Material S3: & & Zip file of all module heatmaps in RLV, PHH and PRH. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S3.zip}} \\
+%     Supplemental Material S4: & & Zip file with xls files containing p-values of module overlaps (for all experimental settings), p-values for the 'special' cases such as hepatocarcinogens/cancer pathways/etc. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S4.zip}} \\
+%     Supplemental Material S5: & & Zip file with all leading edge genes in all modules for all datasets. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S5.zip}} \\
+%     Supplemental Material S6: & & Document describing how to reproduce the study results by running the analysis pipeline. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S6.pdf}} \\
+%     Supplemental Material S7: & & Analysis pipeline code without microarray data, also available at \url{https://github.com/bhaibeka/TGGATES}. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S7.zip}} \\
+%     Supplemental Material S8: & & Histograms showing the distribution of significant differentially expressed genes in hepatocarcinogens vs. non hepatocarcinogens, in RLV, PRH and PHH respectively. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S8.zip}} \\
+%     \end{tabular}
+% \end{center}
+
+\begin{description}
+ \item[Supplemental Material S1:] \hfill \\ Venn diagram showing the overlap between human and rat Reactome pathways. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S1.pdf}} 
+ \item[Supplemental Material S2:] \hfill \\ One hundred and fifteen common chemicals analyzed in the TG-GATEs project. Among the experiments in TG-GATEs, these 115 chemicals were common for the rat in vivo, primary human hepatocytes, and primary rat hepatocytes platforms. This included known rat hepatocarcinogens. Non-carcinogenic compounds, selected as a negative control, are highlighted in blue. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S2.pdf}}
+ \item[Supplemental Material S3:] \hfill \\ Zip file of all module heatmaps in RLV, PHH and PRH. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S3.zip}}
+ \item[Supplemental Material S4:] \hfill \\ Zip file with xls files containing p-values of module overlaps (for all experimental settings), p-values for the 'special' cases such as hepatocarcinogens/cancer pathways/etc. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S4.zip}}
+ \item[Supplemental Material S5:] \hfill \\ Zip file with all leading edge genes in all modules for all datasets. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S5.zip}}
+ \item[Supplemental Material S6:] \hfill \\ Document describing how to reproduce the study results by running the analysis pipeline. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S6.pdf}}
+ \item[Supplemental Material S7:] \hfill \\ Analysis pipeline code without microarray data, also available at \url{https://github.com/bhaibeka/TGGATES}. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S7.zip}}
+ \item[Supplemental Material S8:] \hfill \\ Histograms showing the distribution of significant differentially expressed genes in hepatocarcinogens vs. non hepatocarcinogens, in RLV, PRH and PHH respectively. \\ \textcolor{blue}{\url{http://www.pmgenomics.ca/bhklab/pubs/tggates/S8.zip}}
+\end{description}
+% 
+\end{document}
