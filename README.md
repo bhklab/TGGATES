@@ -2,7 +2,7 @@
 
 **Citation**
 
-_Early transcriptional responses induced by chemicals are conserved in vitro and in vivo and across species_
+_Characterization of conserved toxicogenomic responses in chemically exposed hepatocytes across species and platforms_
 Nehme El-Hachem, Patrick Grossmann, Alexis Blanchet-Cohen, Alain R. Bateman, Nicolas Bouchard, Jacques Archambault, Hugo J.W.L. Aerts & Benjamin Haibe-Kains
 
 
