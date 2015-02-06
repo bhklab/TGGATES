@@ -3,6 +3,7 @@
 **Citation**
 
 _Characterization of conserved toxicogenomic responses in chemically exposed hepatocytes across species and platforms_
+
 Nehme El-Hachem, Patrick Grossmann, Alexis Blanchet-Cohen, Alain R. Bateman, Nicolas Bouchard, Jacques Archambault, Hugo J.W.L. Aerts & Benjamin Haibe-Kains
 
 
